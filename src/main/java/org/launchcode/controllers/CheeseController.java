@@ -41,6 +41,7 @@ public class CheeseController {
     public String processAddCheeseForm(@RequestParam String cheeseName, @RequestParam String cheeseDesc) {
 
         Cheese cheese = new Cheese(cheeseName, cheeseDesc);
+
         cheeses.add(cheese);
 
         // Redirect to cheese/
@@ -57,10 +58,15 @@ public class CheeseController {
 
     // Request path: cheese/remove
     @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String processRemoveCheeseForm(@RequestParam ArrayList<String> cheeseNames) {
+    public String processRemoveCheeseForm(@RequestParam ArrayList<Integer> cheeseIds) {
 
-        for (String cheeseName : cheeseNames) {
-            cheeses.remove(cheeseName);
+        for (Integer cheeseId : cheeseIds) {
+            for (Cheese cheese: cheeses){
+                if (cheese.getId() == cheeseId){
+                    cheeses.remove(cheese);
+                    break;
+                }
+            }
         }
 
         // Redirect to cheese/

@@ -11,11 +11,11 @@
 <form th:if="${cheeses} and ${cheeses.size()}" method="post">
     <ul>
         <li th:each ="cheese : ${cheeses}">
-            <span th:text="${cheese.key}"></span>
+            <span th:text="${cheese.name}"></span>
             <input
-                name="cheeseNames"
+                name="cheeseIds"
                 type="checkbox"
-                th:value="${cheese.key}"
+                th:value="${cheese.id}"
             />
         </li>
     </ul>

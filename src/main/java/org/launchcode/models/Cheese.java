@@ -1,12 +1,20 @@
 package org.launchcode.models;
 
 public class Cheese {
+    private int id;
     private String name;
     private String description;
+    private static int nextId = 0;
 
     public Cheese(String name, String description) {
+        this.id = nextId;
         this.name = name;
         this.description = description;
+        nextId++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
